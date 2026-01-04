@@ -2,6 +2,9 @@
     "userspace_version": "1.1",
     "build_targets": [
         ["bastardkb/charybdis/3x5/v2/splinky_3", "chenjing"],
-        ["bastardkb/charybdis/3x5/v2/splinky_3", "chenjing_jump"]
+        ["bastardkb/charybdis/3x5/v2/splinky_3", "chenjing", {
+            "JUMP_BUILD": "1",
+            "TARGET": "bastardkb_charybdis_3x5_v2_splinky_3_chenjing_jump"
+        }]
     ]
 }

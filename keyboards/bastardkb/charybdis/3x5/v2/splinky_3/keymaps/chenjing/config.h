@@ -146,3 +146,10 @@
 // #define AUTO_MOUSE_THRESHOLD 10      // 민감도(가속 임계치)
 
 // (펌웨어 레벨 포인터 가속 비사용: VIA의 DPI 조정만 사용)
+
+// ───────────────────────── 점프 전용(옵션) ─────────────────────────
+// JUMP_BUILD 활성 시 점프 보드의 시리얼 통신 핀을 재정의합니다.
+#ifdef JUMP_BUILD
+#undef SOFT_SERIAL_PIN
+#define SOFT_SERIAL_PIN GP10
+#endif
