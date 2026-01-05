@@ -15,19 +15,59 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// Minimal skeleton: VIA manages the actual keymap at runtime.
-// - 이 파일의 배열은 플래시 직후 안전한 기본 레이아웃(백업용)만 제공합니다.
-// - 실제 사용 레이아웃/레이어는 VIA에서 편집하세요.
+// VIA 동적 키맵은 EEPROM에 저장됩니다.
+// - 이 배열은 EEPROM 초기화(또는 첫 플래시) 후 기본값으로 사용됩니다.
+// - VIA 내보내기 JSON과 동일한 레이아웃을 유지하세요.
 #include QMK_KEYBOARD_H
 
-// Single safe fallback layer only; no tap/hold callbacks.
+// VIA JSON의 CUSTOM(n) 코드를 키보드 전용 키코드 범위로 매핑합니다.
+// (필요 시 QK_USER_0로 변경하세요.)
+#ifndef CUSTOM
+#define CUSTOM(n) (QK_KB_0 + (n))
+#endif
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
-        /* Miryoku (Colemak-DH) style base */
-        KC_Q, KC_W, KC_F, KC_P, KC_B,       KC_J, KC_L, KC_U, KC_Y, KC_SCLN,
-        KC_A, KC_R, KC_S, KC_T, KC_G,       KC_M, KC_N, KC_E, KC_I, KC_O,
-        KC_Z, KC_X, KC_C, KC_D, KC_V,       KC_K, KC_H, KC_COMM, KC_DOT, KC_SLSH,
-                            KC_SPC, KC_BSPC, KC_ESC, KC_ENT, QK_BOOT  // QK_BOOT: 부트로더 진입(플래시용)
+        KC_Q, KC_W, KC_E, KC_R, KC_T,       KC_Y, KC_U, KC_I, KC_O, KC_P,
+        MT(MOD_LCTL, KC_A), MT(MOD_LALT, KC_S), MT(MOD_LGUI, KC_D), MT(MOD_LSFT, KC_F), KC_G,       KC_H, MT(MOD_LSFT | MOD_RSFT, KC_J), MT(MOD_LGUI | MOD_RGUI, KC_K), MT(MOD_LALT, KC_L), MT(MOD_LCTL | MOD_RCTL, KC_QUOT),
+        LT(4, KC_Z), KC_X, KC_C, KC_V, KC_B,       KC_N, KC_M, KC_COMM, KC_DOT, LT(4, KC_SLSH),
+                            LT(1, KC_TAB), LT(3, KC_CAPS), LT(2, KC_SPC), LT(5, KC_BSPC), LT(6, KC_ENT)
+    ),
+    [1] = LAYOUT(
+        KC_NO, KC_MPRV, KC_MPLY, KC_MNXT, KC_F12,       S(KC_8), S(KC_7), S(KC_9), S(KC_0), KC_BSLS,
+        KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, KC_F11,       KC_MINS, S(KC_4), S(KC_5), S(KC_6), KC_SCLN,
+        KC_NO, KC_VOLD, KC_MUTE, KC_VOLU, KC_F10,       KC_EQL, S(KC_1), S(KC_2), S(KC_3), KC_SLSH,
+                            KC_NO, KC_NO, KC_TRNS, KC_BSLS, KC_TRNS
+    ),
+    [2] = LAYOUT(
+        KC_GRV, LAG(KC_LEFT), G(KC_T), LAG(KC_RGHT), G(KC_W),       KC_PGUP, G(KC_LEFT), KC_UP, G(KC_RGHT), KC_NO,
+        G(KC_A), KC_LALT, KC_LGUI, KC_LSFT, G(KC_F),       KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO,
+        G(KC_Z), G(KC_X), G(KC_C), G(KC_V), KC_TRNS,       KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+                            KC_TRNS, KC_NO, KC_NO, KC_DEL, KC_TRNS
+    ),
+    [3] = LAYOUT(
+        KC_ESC, KC_NO, KC_NO, KC_NO, KC_NO,       S(KC_8), KC_7, KC_8, KC_9, KC_NO,
+        KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, KC_NO,       KC_MINS, KC_4, KC_5, KC_6, KC_SCLN,
+        KC_NO, KC_MS_BTN4, KC_ENT, KC_MS_BTN5, KC_NO,       KC_EQL, KC_1, KC_2, KC_3, KC_SLSH,
+                            KC_NO, KC_TRNS, KC_NO, KC_P0, KC_TRNS
+    ),
+    [4] = LAYOUT(
+        CUSTOM(1), CUSTOM(0), AS_DOWN, AS_RPT, AS_UP,       DT_DOWN, DT_PRNT, DT_UP, CUSTOM(3), CUSTOM(2),
+        KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, C(S(G(KC_4))),       KC_NO, KC_RSFT, KC_RGUI, KC_RALT, KC_RCTL,
+        KC_TRNS, CUSTOM(6), KC_MS_BTN2, KC_MS_BTN1, LSG(KC_4),       KC_NO, KC_MS_BTN1, KC_MS_BTN2, CUSTOM(6), KC_TRNS,
+                            KC_MS_BTN5, CUSTOM(4), KC_MS_BTN4, KC_MS_BTN4, KC_MS_BTN5
+    ),
+    [5] = LAYOUT(
+        KC_NO, RGB_RMOD, RGB_TOG, RGB_MOD, KC_NO,       KC_NO, KC_F7, KC_F8, KC_F9, KC_F12,
+        KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, KC_NO,       KC_NO, KC_F4, KC_F5, KC_F6, KC_F11,
+        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,       KC_NO, KC_F1, KC_F2, KC_F3, KC_F10,
+                            KC_NO, KC_NO, KC_NO, KC_NO, KC_NO
+    ),
+    [6] = LAYOUT(
+        S(KC_LBRC), S(KC_7), S(KC_8), S(KC_9), S(KC_RBRC),       KC_NO, KC_NO, KC_NO, EE_CLR, QK_BOOT,
+        S(KC_SCLN), S(KC_4), S(KC_5), S(KC_6), S(KC_EQL),       KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        S(KC_GRV), S(KC_1), S(KC_2), S(KC_3), S(KC_BSLS),       KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+                            S(KC_MINS), S(KC_9), S(KC_0), KC_NO, KC_TRNS
     ),
 };
 

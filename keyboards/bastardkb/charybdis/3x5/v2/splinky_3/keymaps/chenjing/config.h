@@ -119,7 +119,7 @@
 #define CHARYBDIS_DEFAULT_DPI_CONFIG_STEP 200   // 증감 스텝(단위: DPI)
 // [스나이핑 DPI] 스나이핑 모드 DPI 범위/스텝 조정.
 //  - 스나이핑(누르고 있는 동안)시 더 빠르게 쓰고 싶다면 기본보다 높은 값으로 설정
-#define CHARYBDIS_MINIMUM_SNIPING_DPI 2000
+#define CHARYBDIS_MINIMUM_SNIPING_DPI 3000
 #define CHARYBDIS_SNIPING_DPI_CONFIG_STEP 200   // 2800, 3000, 3200, 3400
 
 // [드래그 스크롤] 스크롤 방향/감도
