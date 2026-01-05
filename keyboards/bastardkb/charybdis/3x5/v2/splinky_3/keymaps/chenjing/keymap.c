@@ -31,31 +31,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_Q, KC_W, KC_E, KC_R, KC_T,       KC_Y, KC_U, KC_I, KC_O, KC_P,
         MT(MOD_LCTL, KC_A), MT(MOD_LALT, KC_S), MT(MOD_LGUI, KC_D), MT(MOD_LSFT, KC_F), KC_G,       KC_H, MT(MOD_LSFT | MOD_RSFT, KC_J), MT(MOD_LGUI | MOD_RGUI, KC_K), MT(MOD_LALT, KC_L), MT(MOD_LCTL | MOD_RCTL, KC_QUOT),
         LT(4, KC_Z), KC_X, KC_C, KC_V, KC_B,       KC_N, KC_M, KC_COMM, KC_DOT, LT(4, KC_SLSH),
-                            LT(1, KC_TAB), LT(3, KC_CAPS), LT(2, KC_SPC), LT(5, KC_BSPC), LT(6, KC_ENT)
+                            LT(3, KC_CAPS), LT(2, KC_SPC), LT(1, KC_TAB), LT(6, KC_ENT), LT(5, KC_BSPC)
     ),
     [1] = LAYOUT(
         KC_NO, KC_MPRV, KC_MPLY, KC_MNXT, KC_F12,       S(KC_8), S(KC_7), S(KC_9), S(KC_0), KC_BSLS,
         KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, KC_F11,       KC_MINS, S(KC_4), S(KC_5), S(KC_6), KC_SCLN,
         KC_NO, KC_VOLD, KC_MUTE, KC_VOLU, KC_F10,       KC_EQL, S(KC_1), S(KC_2), S(KC_3), KC_SLSH,
-                            KC_NO, KC_NO, KC_TRNS, KC_BSLS, KC_TRNS
+                            KC_NO, KC_TRNS, KC_NO, KC_TRNS, KC_BSLS
     ),
     [2] = LAYOUT(
         KC_GRV, LAG(KC_LEFT), G(KC_T), LAG(KC_RGHT), G(KC_W),       KC_PGUP, G(KC_LEFT), KC_UP, G(KC_RGHT), KC_NO,
         G(KC_A), KC_LALT, KC_LGUI, KC_LSFT, G(KC_F),       KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO,
         G(KC_Z), G(KC_X), G(KC_C), G(KC_V), KC_TRNS,       KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-                            KC_TRNS, KC_NO, KC_NO, KC_DEL, KC_TRNS
+                            KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_DEL
     ),
     [3] = LAYOUT(
         KC_ESC, KC_NO, KC_NO, KC_NO, KC_NO,       S(KC_8), KC_7, KC_8, KC_9, KC_NO,
         KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, KC_NO,       KC_MINS, KC_4, KC_5, KC_6, KC_SCLN,
         KC_NO, KC_MS_BTN4, KC_ENT, KC_MS_BTN5, KC_NO,       KC_EQL, KC_1, KC_2, KC_3, KC_SLSH,
-                            KC_NO, KC_TRNS, KC_NO, KC_P0, KC_TRNS
+                            KC_TRNS, KC_NO, KC_NO, KC_TRNS, KC_P0
     ),
     [4] = LAYOUT(
         CUSTOM(1), CUSTOM(0), AS_DOWN, AS_RPT, AS_UP,       DT_DOWN, DT_PRNT, DT_UP, CUSTOM(3), CUSTOM(2),
         KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, C(S(G(KC_4))),       KC_NO, KC_RSFT, KC_RGUI, KC_RALT, KC_RCTL,
         KC_TRNS, CUSTOM(6), KC_MS_BTN2, KC_MS_BTN1, LSG(KC_4),       KC_NO, KC_MS_BTN1, KC_MS_BTN2, CUSTOM(6), KC_TRNS,
-                            KC_MS_BTN5, CUSTOM(4), KC_MS_BTN4, KC_MS_BTN4, KC_MS_BTN5
+                            CUSTOM(4), KC_MS_BTN4, KC_MS_BTN5, KC_MS_BTN5, KC_MS_BTN4
     ),
     [5] = LAYOUT(
         KC_NO, RGB_RMOD, RGB_TOG, RGB_MOD, KC_NO,       KC_NO, KC_F7, KC_F8, KC_F9, KC_F12,
@@ -67,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         S(KC_LBRC), S(KC_7), S(KC_8), S(KC_9), S(KC_RBRC),       KC_NO, KC_NO, KC_NO, KC_NO, QK_BOOT,
         S(KC_SCLN), S(KC_4), S(KC_5), S(KC_6), S(KC_EQL),       KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
         S(KC_GRV), S(KC_1), S(KC_2), S(KC_3), S(KC_BSLS),       KC_NO, KC_NO, KC_NO, KC_NO, EE_CLR,
-                            S(KC_MINS), S(KC_9), S(KC_0), KC_NO, KC_TRNS
+                            S(KC_9), S(KC_0), S(KC_MINS), KC_TRNS, KC_NO
     ),
 };
 
