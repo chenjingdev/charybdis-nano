@@ -6,7 +6,7 @@
 // ─────────────────────────── 탭/홀드(기본) ───────────────────────────
 // TAPPING_TERM: 탭으로 인식되는 최대 시간(밀리초).
 // - 짧을수록 빠른 반응, 길수록 실수 방지. (현재: 160ms)
-#define TAPPING_TERM 180
+#define TAPPING_TERM 160
 #define AUTO_SHIFT_TIMEOUT 140
 
 // QUICK_TAP_TERM: 홀드 중 짧게 떼도 탭으로 처리하는 유예시간(ms).
@@ -116,11 +116,11 @@
 // [DPI 런타임 스케일] 기본 DPI 범위/스텝 조정.
 // - 기본값(키보드 레벨)은 최저 400DPI입니다.
 // - 이 키맵에서는 최저 1600DPI로 상향(기본 대비 4배 빠름), 스텝은 200DPI.
-#define CHARYBDIS_MINIMUM_DEFAULT_DPI 1000     // 기본 DPI 최저값(기본 400 → 1600)
+#define CHARYBDIS_MINIMUM_DEFAULT_DPI 1600     // 기본 DPI 최저값(기본 400 → 1600)
 #define CHARYBDIS_DEFAULT_DPI_CONFIG_STEP 200   // 증감 스텝(단위: DPI)
 // [스나이핑 DPI] 스나이핑 모드 DPI 범위/스텝 조정.
 //  - 스나이핑(누르고 있는 동안)시 더 빠르게 쓰고 싶다면 기본보다 높은 값으로 설정
-#define CHARYBDIS_MINIMUM_SNIPING_DPI 3000
+#define CHARYBDIS_MINIMUM_SNIPING_DPI 3200
 #define CHARYBDIS_SNIPING_DPI_CONFIG_STEP 200   // 2800, 3000, 3200, 3400
 
 // [드래그 스크롤] 스크롤 방향/감도
