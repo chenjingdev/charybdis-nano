@@ -181,3 +181,19 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
 
     return false;
 }
+
+#ifdef QUICK_TAP_TERM_PER_KEY
+// 홈로우 쉬프트는 연타 직후 홀드가 필요하므로 QUICK_TAP을 비활성화합니다.
+uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
+    if (keycode >= QK_MOD_TAP && keycode <= QK_MOD_TAP_MAX) {
+        uint8_t  mods   = QK_MOD_TAP_GET_MODS(keycode);
+        uint16_t tap_kc = QK_MOD_TAP_GET_TAP_KEYCODE(keycode);
+
+        if ((mods & MOD_MASK_SHIFT) && (tap_kc == KC_F || tap_kc == KC_J)) {
+            return 0;
+        }
+    }
+
+    return QUICK_TAP_TERM;
+}
+#endif

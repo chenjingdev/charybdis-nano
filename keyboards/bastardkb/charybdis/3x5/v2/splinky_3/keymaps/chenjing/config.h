@@ -11,9 +11,10 @@
 
 // QUICK_TAP_TERM: 홀드 중 짧게 떼도 탭으로 처리하는 유예시간(ms).
 // - 0이면 기능 사실상 비활성화. 빠른 연타 탭 유지 위해 150~200ms 권장.
-// #define QUICK_TAP_TERM 110
+// 홈로우 쉬프트는 연타 후 즉시 홀드가 필요해 퍼키로 0을 적용합니다.
+#define QUICK_TAP_TERM TAPPING_TERM
 // 퍼키 미세조정 활성화(미구현 시 전역값 사용). get_quick_tap_term()로 제어 가능.
-// #define QUICK_TAP_TERM_PER_KEY
+#define QUICK_TAP_TERM_PER_KEY
 
 // TAPPING_TERM_PER_KEY: 키별로 탭핑텀을 다르게 적용할 수 있게 허용합니다.
 // - 구현은 keymap.c의 get_tapping_term()에서 수행됩니다(미구현 시 전역값 사용).
