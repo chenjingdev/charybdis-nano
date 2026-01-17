@@ -116,31 +116,6 @@ bool get_combo_must_tap(uint16_t combo_index, combo_t *combo) {
 // (현재 COMBO_ACTION 사용 없음)
 #endif // COMBO_ENABLE
 
-// ────────────────────────── Tap-Hold 보정 ──────────────────────────
-// 레이어 전환 키(LT(layer, kc))는 다음 키 입력에 즉시 적용되도록
-// 퍼미시브 홀드를 해당 키들에만 한정해 활성화합니다.
-// - 전역 PERMISSIVE_HOLD는 롤링 시 오타를 유발할 수 있어 비활성화 상태 유지
-// - config.h에서 PERMISSIVE_HOLD_PER_KEY가 정의되어 있어야 합니다.
-bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        // QK_LAYER_TAP 범위: LT(layer, kc) 등 레이어-탭 키
-        case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
-            return true; // 레이어 전환을 즉시(탭텀 대기 없이) 적용
-    }
-
-    // 홈로우 쉬프트(Mod-Tap)는 VIA에서 어떤 쉬프트 조합을 쓰더라도 즉시 홀드 처리합니다.
-    if (keycode >= QK_MOD_TAP && keycode <= QK_MOD_TAP_MAX) {
-        uint8_t  mods   = QK_MOD_TAP_GET_MODS(keycode);
-        uint16_t tap_kc = QK_MOD_TAP_GET_TAP_KEYCODE(keycode);
-
-        if ((mods & MOD_MASK_SHIFT) && (tap_kc == KC_F || tap_kc == KC_J)) {
-            return true;
-        }
-    }
-
-    return false;
-}
-
 #ifdef QUICK_TAP_TERM_PER_KEY
 // 홈로우 쉬프트는 연타 직후 홀드가 필요하므로 QUICK_TAP을 비활성화합니다.
 uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
