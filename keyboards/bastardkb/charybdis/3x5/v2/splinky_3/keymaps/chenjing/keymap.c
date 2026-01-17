@@ -27,7 +27,7 @@
 #endif
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [0] = LAYOUT(KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, MT(MOD_LCTL, KC_A), MT(MOD_LALT, KC_S), MT(MOD_LGUI, KC_D), MT(MOD_LSFT, KC_F), KC_G, KC_H, MT(MOD_LSFT | MOD_RSFT, KC_J), MT(MOD_LGUI | MOD_RGUI, KC_K), MT(MOD_LALT | MOD_RALT, KC_L), MT(MOD_LCTL | MOD_RCTL, KC_QUOT), LT(4, KC_Z), KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, LT(4, KC_SLSH), LT(3, KC_CAPS), LT(2, KC_SPC), LT(1, KC_TAB), LT(6, KC_ENT), LT(5, KC_BSPC)),
+    [0] = LAYOUT(KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, MT(MOD_LCTL, KC_A), MT(MOD_LALT, KC_S), MT(MOD_LGUI, KC_D), MT(MOD_LSFT, KC_F), KC_G, KC_H, MT(MOD_LSFT, KC_J), MT(MOD_LGUI, KC_K), MT(MOD_LALT, KC_L), MT(MOD_LCTL, KC_QUOT), LT(4, KC_Z), KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, LT(4, KC_SLSH), LT(3, KC_CAPS), LT(2, KC_SPC), LT(1, KC_TAB), LT(6, KC_ENT), LT(5, KC_BSPC)),
     [1] = LAYOUT(KC_NO, KC_MPRV, KC_MPLY, KC_MNXT, KC_F12, S(KC_8), S(KC_7), S(KC_9), S(KC_0), KC_BSLS, KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, KC_F11, KC_MINS, S(KC_4), S(KC_5), S(KC_6), KC_SCLN, KC_NO, KC_VOLD, KC_MUTE, KC_VOLU, KC_F10, KC_EQL, S(KC_1), S(KC_2), S(KC_3), KC_SLSH, KC_NO, KC_TRNS, KC_NO, KC_TRNS, KC_BSLS),
     [2] = LAYOUT(KC_GRV, LAG(KC_LEFT), G(KC_T), LAG(KC_RGHT), G(KC_W), KC_PGUP, G(KC_LEFT), KC_UP, G(KC_RGHT), KC_NO, G(KC_A), KC_LALT, KC_LGUI, KC_LSFT, G(KC_F), KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, G(KC_Z), G(KC_X), G(KC_C), G(KC_V), KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_DEL),
     [3] = LAYOUT(KC_ESC, KC_NO, KC_NO, KC_NO, KC_NO, S(KC_8), KC_7, KC_8, KC_9, KC_NO, KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, KC_NO, KC_MINS, KC_4, KC_5, KC_6, KC_SCLN, KC_NO, KC_MS_BTN4, KC_ENT, KC_MS_BTN5, KC_NO, KC_EQL, KC_1, KC_2, KC_3, KC_SLSH, KC_TRNS, KC_NO, KC_NO, KC_TRNS, KC_P0),
@@ -56,10 +56,10 @@ tap_dance_action_t tap_dance_actions[] = {};
 //  - S: MT(MOD_LALT, KC_S)
 //  - D: MT(MOD_LGUI, KC_D)
 //  - F: MT(MOD_LSFT, KC_F)
-//  - J: MT(MOD_LSFT | MOD_RSFT, KC_J)
-//  - K: MT(MOD_LGUI | MOD_RGUI, KC_K)
-//  - L: MT(MOD_LALT | MOD_RALT, KC_L)
-//  - ': MT(MOD_LCTL | MOD_RCTL, KC_QUOT)
+//  - J: MT(MOD_LSFT, KC_J)
+//  - K: MT(MOD_LGUI, KC_K)
+//  - L: MT(MOD_LALT, KC_L)
+//  - ': MT(MOD_LCTL, KC_QUOT)
 
 enum chenjing_combos {
     DF_CAPS,
@@ -85,13 +85,13 @@ const uint16_t PROGMEM m_comm_combo[]   = {KC_M, KC_COMM, COMBO_END};
 const uint16_t PROGMEM comm_dot_combo[] = {KC_COMM, KC_DOT, COMBO_END};
 
 // J + K => (   K + L => )
-const uint16_t PROGMEM jk_open_combo[]  = {MT(MOD_LSFT | MOD_RSFT, KC_J), MT(MOD_LGUI | MOD_RGUI, KC_K), COMBO_END};
-const uint16_t PROGMEM kl_close_combo[] = {MT(MOD_LGUI | MOD_RGUI, KC_K), MT(MOD_LALT | MOD_RALT, KC_L), COMBO_END};
+const uint16_t PROGMEM jk_open_combo[]  = {MT(MOD_LSFT, KC_J), MT(MOD_LGUI, KC_K), COMBO_END};
+const uint16_t PROGMEM kl_close_combo[] = {MT(MOD_LGUI, KC_K), MT(MOD_LALT, KC_L), COMBO_END};
 // J(ㅓ) + K(ㅏ) + L(ㅣ) => \(backslash)
-const uint16_t PROGMEM jkl_combo[] = {MT(MOD_LSFT | MOD_RSFT, KC_J), MT(MOD_LGUI | MOD_RGUI, KC_K), MT(MOD_LALT | MOD_RALT, KC_L), COMBO_END};
+const uint16_t PROGMEM jkl_combo[] = {MT(MOD_LSFT, KC_J), MT(MOD_LGUI, KC_K), MT(MOD_LALT, KC_L), COMBO_END};
 
 // L(ㅣ) + '(Ctrl Mod-Tap apostrophe) => ;(semicolon)
-const uint16_t PROGMEM l_quot_combo[] = {MT(MOD_LALT | MOD_RALT, KC_L), MT(MOD_LCTL | MOD_RCTL, KC_QUOT), COMBO_END};
+const uint16_t PROGMEM l_quot_combo[] = {MT(MOD_LALT, KC_L), MT(MOD_LCTL, KC_QUOT), COMBO_END};
 
 combo_t key_combos[] = {
     [DF_CAPS] = COMBO(df_combo, KC_CAPS), [SDF_CW] = COMBO(sdf_combo, CW_TOGG), [SD_GRV] = COMBO(sd_combo, KC_GRAVE), [JK_LPRN] = COMBO(jk_open_combo, S(KC_9)), [KL_RPRN] = COMBO(kl_close_combo, S(KC_0)), [JKL_BSLS] = COMBO(jkl_combo, KC_BSLS), [M_COMM_LBRC] = COMBO(m_comm_combo, KC_LBRC), [COMM_DOT_RBRC] = COMBO(comm_dot_combo, KC_RBRC), [L_QUOT_SCLN] = COMBO(l_quot_combo, KC_SCLN),
