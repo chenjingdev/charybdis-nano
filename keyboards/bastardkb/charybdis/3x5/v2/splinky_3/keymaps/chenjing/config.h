@@ -29,7 +29,7 @@
 // #define FLOW_TAP_TERM 150   // CHORDAL_HOLD 보조 파라미터(권장 140~170)
 // #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY  // 특정 키만 위 동작 적용
 // 레이어 전환 키(LT)를 즉시 활성화하기 위해 퍼키 적용 사용
-// #define PERMISSIVE_HOLD_PER_KEY
+#define PERMISSIVE_HOLD_PER_KEY
 
 // ───────────────────── 동적 탭핑텀(선택 기능) ─────────────────────
 // DT_* 키코드로 런타임에 탭핑텀을 조절할 때의 증분값(ms).
