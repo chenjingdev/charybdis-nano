@@ -66,11 +66,15 @@ enum chenjing_combos {
     SDF_CW,
     SD_GRV,
     JK_LPRN,
+    JK_LPRN_LEGACY,
     KL_RPRN,
+    KL_RPRN_LEGACY,
     JKL_BSLS,
+    JKL_BSLS_LEGACY,
     M_COMM_LBRC,
     COMM_DOT_RBRC,
     L_QUOT_SCLN,
+    L_QUOT_SCLN_LEGACY,
 };
 
 // D + F => Caps Lock
@@ -93,8 +97,14 @@ const uint16_t PROGMEM jkl_combo[] = {MT(MOD_RSFT, KC_J), MT(MOD_RGUI, KC_K), MT
 // L(ㅣ) + '(Ctrl Mod-Tap apostrophe) => ;(semicolon)
 const uint16_t PROGMEM l_quot_combo[] = {MT(MOD_RALT, KC_L), MT(MOD_RCTL, KC_QUOT), COMBO_END};
 
+// Existing VIA EEPROM layouts may still contain left-side modifier keycodes on the right hand.
+const uint16_t PROGMEM jk_open_combo_legacy[]  = {MT(MOD_LSFT, KC_J), MT(MOD_LGUI, KC_K), COMBO_END};
+const uint16_t PROGMEM kl_close_combo_legacy[] = {MT(MOD_LGUI, KC_K), MT(MOD_LALT, KC_L), COMBO_END};
+const uint16_t PROGMEM jkl_combo_legacy[]      = {MT(MOD_LSFT, KC_J), MT(MOD_LGUI, KC_K), MT(MOD_LALT, KC_L), COMBO_END};
+const uint16_t PROGMEM l_quot_combo_legacy[]   = {MT(MOD_LALT, KC_L), MT(MOD_LCTL, KC_QUOT), COMBO_END};
+
 combo_t key_combos[] = {
-    [DF_CAPS] = COMBO(df_combo, KC_CAPS), [SDF_CW] = COMBO(sdf_combo, CW_TOGG), [SD_GRV] = COMBO(sd_combo, KC_GRAVE), [JK_LPRN] = COMBO(jk_open_combo, S(KC_9)), [KL_RPRN] = COMBO(kl_close_combo, S(KC_0)), [JKL_BSLS] = COMBO(jkl_combo, KC_BSLS), [M_COMM_LBRC] = COMBO(m_comm_combo, KC_LBRC), [COMM_DOT_RBRC] = COMBO(comm_dot_combo, KC_RBRC), [L_QUOT_SCLN] = COMBO(l_quot_combo, KC_SCLN),
+    [DF_CAPS] = COMBO(df_combo, KC_CAPS), [SDF_CW] = COMBO(sdf_combo, CW_TOGG), [SD_GRV] = COMBO(sd_combo, KC_GRAVE), [JK_LPRN] = COMBO(jk_open_combo, S(KC_9)), [JK_LPRN_LEGACY] = COMBO(jk_open_combo_legacy, S(KC_9)), [KL_RPRN] = COMBO(kl_close_combo, S(KC_0)), [KL_RPRN_LEGACY] = COMBO(kl_close_combo_legacy, S(KC_0)), [JKL_BSLS] = COMBO(jkl_combo, KC_BSLS), [JKL_BSLS_LEGACY] = COMBO(jkl_combo_legacy, KC_BSLS), [M_COMM_LBRC] = COMBO(m_comm_combo, KC_LBRC), [COMM_DOT_RBRC] = COMBO(comm_dot_combo, KC_RBRC), [L_QUOT_SCLN] = COMBO(l_quot_combo, KC_SCLN), [L_QUOT_SCLN_LEGACY] = COMBO(l_quot_combo_legacy, KC_SCLN),
 };
 
 // Mod-Tap이 포함된 콤보는 '탭'일 때만 발동하게 해 오작동을 줄입니다.
