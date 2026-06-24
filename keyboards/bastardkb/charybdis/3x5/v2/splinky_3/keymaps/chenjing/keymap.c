@@ -117,7 +117,7 @@ bool get_combo_must_tap(uint16_t combo_index, combo_t *combo) {
 #endif // COMBO_ENABLE
 
 // ────────────────────────── Tap-Hold 보정 ──────────────────────────
-// 홈로우 쉬프트/GUI(Mod-Tap)는 다음 키 입력에 즉시 홀드로 처리합니다.
+// 홈로우 쉬프트(Mod-Tap)는 다음 키 입력에 즉시 홀드로 처리합니다.
 // - config.h에서 PERMISSIVE_HOLD_PER_KEY가 정의되어 있어야 합니다.
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     (void)record;
@@ -126,10 +126,6 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
         uint16_t tap_kc = QK_MOD_TAP_GET_TAP_KEYCODE(keycode);
 
         if ((mods & MOD_MASK_SHIFT) && (tap_kc == KC_F || tap_kc == KC_J)) {
-            return true;
-        }
-
-        if ((mods & MOD_MASK_GUI) && (tap_kc == KC_D || tap_kc == KC_K)) {
             return true;
         }
     }
